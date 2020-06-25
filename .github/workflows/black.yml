@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: psf/black@2082a325fdd14f0aabd88f7f12a20f9fb085c538
+      - uses: psf/black@7403d95862ae54c3504a8003666e1a0739067894
