@@ -13,7 +13,7 @@ jobs:
           echo $PWD
           tree .
           python -m pip install black
-          "black . --check --exclude /(folder1/folder2)/"
+          black . --check --exclude "/(folder1/folder2)/"
 
       - uses: psf/black@stable
         with:
