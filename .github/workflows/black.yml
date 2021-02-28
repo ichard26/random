@@ -10,8 +10,10 @@ jobs:
       - uses: actions/setup-python@v2
       - name: debug info
         run: |
-          echo .
+          echo $PWD
           tree .
+          python -m pip install black
+          "black . --check --exclude /(folder1/folder2)/"
 
       - uses: psf/black@stable
         with:
