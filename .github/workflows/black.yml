@@ -8,6 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+      - name: debug info
+        run: |
+          echo .
+          tree .
+
       - uses: psf/black@stable
         with:
           args: ". --check --exclude /(folder1/folder2)/"
