@@ -8,13 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - name: debug info
-        run: |
-          echo $PWD
-          tree .
-          python -m pip install black
-          black . --check --exclude "/(folder1/folder2)/"
 
-      - uses: psf/black@stable
+      - uses: ichard26/black@fix-action
         with:
-          args: ". --check --exclude /(folder1/folder2)/"
+          black_args: ". --diff --exclude /(folder1/folder2)/"
+
+      - uses: ichard26/black@fix-action
+        with:
+          src: "."
+          options: "--diff --exclude /(folder1/folder2)/"
+
