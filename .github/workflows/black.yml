@@ -16,4 +16,5 @@ jobs:
       - uses: stefanfoulis/black@feature/allow-overriding-black-version-in-github-action
         with:
           black_args: ". --diff --exclude /(folder1/folder2)/"
-          black_version: "19.10b0"
+      - name: more debug
+        run: python -c "import pathspec ; print(pathspec.__file__) ; print(pathspec.__version__)"
