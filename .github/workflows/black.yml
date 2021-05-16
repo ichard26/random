@@ -9,12 +9,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
 
-      - uses: ichard26/black@fix-action
+      - uses: stefanfoulis/black@allow-overriding-black-version-in-github-action
         with:
           black_args: ". --diff --exclude /(folder1/folder2)/"
-
-      - uses: ichard26/black@fix-action
-        with:
-          src: "."
-          options: "--diff --exclude /(folder1/folder2)/"
-
