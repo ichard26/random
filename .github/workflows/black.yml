@@ -15,6 +15,6 @@ jobs:
           python --version
       - uses: stefanfoulis/black@feature/allow-overriding-black-version-in-github-action
         with:
-          black_args: ". --diff --exclude *.py"
+          black_args: "--version"
       - name: more debug
         run: python -c "import pathspec ; print(pathspec.__file__) ; print(pathspec.__version__)"
