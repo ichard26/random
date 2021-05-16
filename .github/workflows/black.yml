@@ -11,6 +11,9 @@ jobs:
         run: |
           which pip
           which python
+          pip --version
+          python --version
       - uses: stefanfoulis/black@feature/allow-overriding-black-version-in-github-action
         with:
           black_args: ". --diff --exclude /(folder1/folder2)/"
+          black_version: "19.10b0"
