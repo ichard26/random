@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - id: debug
+        run: |
+          which pip
+          which python
       - uses: stefanfoulis/black@feature/allow-overriding-black-version-in-github-action
         with:
           black_args: ". --diff --exclude /(folder1/folder2)/"
