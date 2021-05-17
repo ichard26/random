@@ -28,7 +28,7 @@ jobs:
         with:
           options: "--diff --check --color -v"
           src: "."
-          black_version: "19.10b0"
+          version: "19.10b0"
 
       - name: more debug
         run: python -c "import pathspec ; print(pathspec.__file__) ; print(pathspec.__version__)"
