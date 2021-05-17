@@ -4,7 +4,12 @@ on: [push, pull_request]
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - id: debug
@@ -13,8 +18,17 @@ jobs:
           which python
           pip --version
           python --version
-      - uses: stefanfoulis/black@feature/allow-overriding-black-version-in-github-action
+
+      - uses: ichard26/black@feature/allow-overriding-black-version-in-github-action
         with:
-          black_args: "--version"
+          options: "--diff --check --color -v"
+          src: "."
+
+      - uses: ichard26/black@feature/allow-overriding-black-version-in-github-action
+        with:
+          options: "--diff --check --color -v"
+          src: "."
+          black_version: "19.10b0"
+
       - name: more debug
         run: python -c "import pathspec ; print(pathspec.__file__) ; print(pathspec.__version__)"
