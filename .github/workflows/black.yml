@@ -13,11 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: ichard26/black@feature/allow-overriding-black-version-in-github-action
+      - uses: stefanfoulis/black@feature/allow-overriding-black-version-in-github-action
+        if: ${{ matrix.os }} == "windows-latest"
         with:
           black_args: ". --diff --check --color -v"
 
-      - uses: ichard26/black@feature/allow-overriding-black-version-in-github-action
+      - uses: stefanfoulis/black@feature/allow-overriding-black-version-in-github-action
+        if: ${{ matrix.os }} != "windows-latest"
         with:
           options: "--diff --check --color -v"
           src: "."
