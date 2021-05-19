@@ -13,8 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: stefanfoulis/black@feature/allow-overriding-black-version-in-github-action
+      - uses: ichard26/black@feature/allow-overriding-black-version-in-github-action
         with:
           options: "--diff --check --color -v"
           src: "."
           version: "20.8b1"
+
+      - run: python3 -c "import pathspec ; print(pathspec.__version__)"
