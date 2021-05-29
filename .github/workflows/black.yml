@@ -20,9 +20,4 @@ jobs:
         with:
           options: "--diff --check --color -v"
           src: "."
-          version: "20.8b1"
-
-      - uses: ichard26/black@feature/allow-overriding-black-version-in-github-action
-        with:
-          black_args: "--version"
-          version: "21.5b1"
+          version: "2.8b1"
