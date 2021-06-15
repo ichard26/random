@@ -11,13 +11,12 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      # - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: "3.6"
 
       - uses: psf/black@stable
         with:
-          options: "--diff --check --color -v"
+          options: "--check --diff"
           src: "."
-          version: "20.8b1"
