@@ -16,13 +16,8 @@ jobs:
         with:
           python-version: "3.6"
 
-      - uses: ichard26/black@feature/allow-overriding-black-version-in-github-action
+      - uses: psf/black@stable
         with:
           options: "--diff --check --color -v"
           src: "."
           version: "20.8b1"
-
-      - uses: ichard26/black@feature/allow-overriding-black-version-in-github-action
-        with:
-          black_args: "--version"
-          version: "21.5b1"
