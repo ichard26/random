@@ -1,6 +1,6 @@
 name: Lint
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   lint:
@@ -11,12 +11,12 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     steps:
-      # - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: "3.6"
 
-      - uses: psf/black@stable
+      - uses: joshowen/black@7e67446bef31f3bc49c85bb6219b8ae0c392ffe8
         with:
           options: "--check --diff"
           src: "."
