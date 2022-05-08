@@ -28,6 +28,5 @@ jobs:
       - name: Fail job changes were made (PR only)
         if: github.event_name == 'pull_request'
         run: |
-          git update-index --refresh
           git diff-index --quiet HEAD -- || (git diff && exit 1)
 
