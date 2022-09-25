@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ionite34/black@action-update
+      - uses: aaossa/black@main
         with:
           src: "."
+          jupyter: true
