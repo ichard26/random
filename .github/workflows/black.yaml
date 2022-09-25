@@ -16,4 +16,4 @@ jobs:
       - uses: aaossa/black@main
         with:
           src: "."
-          jupyter: true
+          jupyter: yes
