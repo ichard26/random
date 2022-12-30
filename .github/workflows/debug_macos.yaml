@@ -1,0 +1,30 @@
+name: Debug macOS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: ${{ matrix.os }} (Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-10.15, macos-11, macos-12]
+        python: ["3.7", "3.8", "3.9"]
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Print debug information (w/ packaging 22.0)
+        run: pip install packaging==22.0 && python debug.py
+
+      - name: Print debug information (w/ packaging 21.3)
+        run: pip install packaging==21.3 && python debug.py
+
