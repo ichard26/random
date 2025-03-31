@@ -7,22 +7,22 @@ on:
 
 jobs:
   packaging:
-    name: packaging / ${{ matrix.os }}
+    # env:
+    #   PYTHONPROFILEIMPORTTIME: yes
+    name: ${{ matrix.os }} / ${{ matrix.method }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
+        method: ["python -m pip", "pip"]
 
     steps:
-      - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - run: pip install nox
-      - run: pip uninstall nox -y
-      - run: pip install nox
 
-      - run: python -Ximporttime -m pip install nox
-      - run: python -Ximporttime -m pip uninstall nox -y
-      - run: python -Ximporttime -m pip install nox
+      - run: pip install nox
+        if: matrix.method == 'pip'
 
+      - run: python -m pip install nox
+        if: matrix.method == 'python -m pip'
