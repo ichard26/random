@@ -21,6 +21,8 @@ jobs:
         with:
           python-version: "3.x"
 
+      - run: pipx run nox --help
+
       - run: pip install nox
         if: matrix.method == 'pip'
 
