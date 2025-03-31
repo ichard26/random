@@ -9,6 +9,8 @@ jobs:
   packaging:
     # env:
     #   PYTHONPROFILEIMPORTTIME: yes
+    env:
+      PYTHONPYCACHEPREFIX: D:\custom_pycache
     name: ${{ matrix.os }} / ${{ matrix.method }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -17,11 +19,12 @@ jobs:
         method: ["python -m pip", "pip"]
 
     steps:
+      - run: mkdir D:\custom_pycache
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
-      - run: pipx run nox --help
+      # - run: pipx run nox --help
 
       - run: pip install nox
         if: matrix.method == 'pip'
