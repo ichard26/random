@@ -11,6 +11,7 @@ jobs:
     #   PYTHONPROFILEIMPORTTIME: yes
     env:
       PYTHONPYCACHEPREFIX: D:\custom_pycache
+      PYTHONDONTWRITEBYTECODE: yes
     name: ${{ matrix.os }} / ${{ matrix.method }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -31,3 +32,5 @@ jobs:
 
       - run: python -m pip install nox
         if: matrix.method == 'python -m pip'
+
+      - run: pip --help
