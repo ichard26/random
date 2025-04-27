@@ -1,0 +1,11 @@
+name: pip install
+
+on: [workflow_dispatch]
+
+jobs:
+  pip:
+    name: pip install torch
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip install pip -U
+      - run: pip install torch pytest six black pluggy freezegun installer nox mypy sphinx --no-deps
